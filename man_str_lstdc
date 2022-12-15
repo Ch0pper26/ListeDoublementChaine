@@ -1,0 +1,35 @@
+La liste doublement chaine se compose des composant :
+
+-	int		index;
+-	void	*data; -> malloc
+-	t_lstdc	*next;
+-	t_lstdc	*prev;
+
+-	type = s (string , char *);
+
+Seul le type spécifiés ci-dessus sont supporter.
+t_lstdc ** = &lstdc;
+
+/******** ft_str_lstdc.c  ********/
+
+ --- / t_lstdc	*ft_create_str_lstdc(char **data, int nb_elem) \ ---
+ 
+Créer une liste de str dont la data est égale à un élément de data.
+
+ --- / void	ft_add_str(t_lstdc **lstdc, char *elem, int index) \ ---
+
+Ajoute une case str à la lstdc envoyer en paramétre à l'index demander (si index = 0 alors ajoute au début si index = -1 ou trop grand alors ajoute à la fin).
+
+ --- / char	*ft_get_str(t_lstdc **lstdc, int index) \ ---
+ 
+Renvoi la data à l'index demander sous forme d'un char *.
+Si l'index = -1 ou est trop grand va jusqu'à la fin.
+
+ --- / char	**ft_get_strs(t_lstdc **lstdc, int *index, int nb_elem) \ ---
+
+Renvoi les data aux index demander sous forme d'un char ** (malloc).
+Si index[0] = -2 alors renvoie toutes les valeurs de la lstdc
+
+ --- / char	*ft_change_str(t_lstdc **lstdc, char *data, int index) \ ---
+ 
+Renvoi la data à l'index demander et la remplace par la data passer en paramètre

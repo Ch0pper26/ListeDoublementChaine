@@ -1,0 +1,189 @@
+La liste doublement chaine se compose des composant :
+
+-	int		index;
+-	void	*data; -> malloc
+-	t_lstdc	*next;
+-	t_lstdc	*prev;
+
+-	type = d ou i(int);
+-	type = c (char);
+-	type = s (string char *);
+
+Seul les types spécifiés ci-dessus sont supporter.
+t_lstdc ** = &lstdc;
+
+ --- / void **ft_itovv \ ---
+ 
+Transforme un tableau de int (int *) en void ** (malloc).
+
+ --- / void **ft_ctovv \ ---
+ 
+Transforme un tableau de char (char *) en void ** (malloc).
+
+ --- / void **ft_stovv \ ---
+ 
+Transforme un tableau de string (char **) en void ** (malloc).
+
+/******** ft_void_to_anything********/
+
+ --- / void **ft_vvtoi \ ---
+ 
+Transforme un void ** en tableau de int (int *) (malloc).
+Attention cela doit être le type de base de la donné stocké dans le void **.
+
+ --- / void **ft_vvtoc \ ---
+ 
+Transforme un void ** en tableau de char (char *) (malloc).
+Attention cela doit être le type de base de la donné stocké dans le void **.
+
+ --- / void **ft_vvtos \ ---
+ 
+Transforme un void ** en tableau de string (char **) (malloc).
+Attention cela doit être le type de base de la donné stocké dans le void **.
+
+/******** ft_create_lstdc ********/
+
+ --- / t_lstdc *create_one(int	index, void *data); \ ---
+
+Renvoi une t_lstdc * en initialisant sont prev et next a NULL et index = index et data = data pour avoir le void * voir itovv,atovv,stovv(malloc).
+
+ --- / t_lstdc *create_lstdc(int nb_elem, void **data, char type); \ ---
+
+Renvoi une t_lstdc *de la taille de nb_elem en initialisant les data grace à **data (la case d'index 0 aura ça "data = data[0]" selon le type indiquer par type)
+pour avoir le void ** voir itovv,atovv,stovv, pour free la strucutre voir ft_free_lstdc si vous voulez vos index décalér voir ft_fix_index (Bcp de fonction remette les index a 1).
+
+/******** ft_add_lstdc ********/
+
+(⚠️ Aucune des fonctions ne malloc la data si vous voulez ajouter de nouvelle data aller voir les ft_add correspondant au type de la data à ajouter).
+Si vous voulez quand même utiliser la fonction aller il faut malloc la data que vous allez ajouter dans un pointeur de de 1 * de plus .
+ex :
+try = malloc(sizeof(char **));
+	*try = "HELLO";
+
+ --- / void	ft_add_front(t_lstdc **lstdc, void *data) \ ---
+ 
+Ajoute au début de la lstdc envoyer en parametre (&lstdc) un maillon initialisé dont l'élèment data vaut data le prev et initialisé a NULL.
+
+ --- / void	ft_add_back(t_lstdc **lstdc, void *data) \ ---
+ 
+Ajoute à la fin de la lstdc envoyer en parametre (&lstdc) un maillon initialisé dont l'élèment data vaut data.
+
+ --- / ft_add_index(t_lstdc **lstdc, void *data, int index) \ ---
+ 
+Ajoute à la lstdc envoyer en parametre (&lstdc) à l'index indiqué un maillon initialisé dont l'élèment data vaut data.
+À savoir que si il y a déjà un élèments au même index que celui demander alors les index des cases existante seront décalé de 1 pour laisser l'index au nouveau maillon.
+À savoir que si l'index demandé est trop grand alors le maillon sera juste ajouter à la fin de la lstdc et l'index sera égale à celui de l'ancien dernier + 1.
+À savoir 0 permet d'ajouter au début et -1 à la fin.
+
+ --- / void	ft_add_elem(t_lstdc **lstdc, t_lstdc *elem, int index) \ ---
+ 
+Ajoute un element à l'index indiquer, -1 ajoute la case à l'avant dernière place, -2 ajoute la case à la dernière place. (Attention l'element ajouter ne sera pas a free il le sera en même temps que la lstdc).
+
+/******** ft_free_lstdc ********/
+
+ --- / void	ft_free_lstdc(t_lstdc **lstdc) \ ---
+
+Free (Détruit) tous les maillons de la lstdc du début jusqu'à la fin.
+
+ --- / void	ft_destroy_link(t_lstdc **lstdc, int index) \ ---
+
+Free (Détruit) le maillon de la lstdc à l'index indiquer dans le int * (sans casser la lstdc) si l'index -1 est indiquer alors le dernier élèments est détruit si l'index n'existe pas alors rien n'est détruit.
+
+ --- / void	ft_destroy_links(t_lstdc **lstdc, int *index) \ ---
+
+Free (Détruit) tout les maillons de la lstdc aux index indiquer (sans casser la lstdc) si l'index -1 est indiquer alors le dernier élèments est détruit si l'index n'existe pas alors rien n'est détruit.
+
+ --- / void	ft_destroy_slot(t_lstdc **lstdc, int start, int end) \ ---
+
+Free (Détruit) tout les maillons de la lstdc sur la plage compris entre start et end compris (sans casser la lstdc) si l'index n'existe pas alors rien n'est détruit.
+
+/******** ft_print_lstdc ********/
+
+ --- / void	ft_print_one(t_lstdc *lstdc, char type) \ ---
+
+Imprime la data de la case passer en paramètre grâce au type choisie (le type choisie doit correspondre au type de départ).
+
+ --- / void	ft_print_lstdc(t_lstdc **lstdc, char type) \ ---
+
+Imprime la data de tout les élèments de la lstdc passer en paramètre grâce au type choisie (le type choisie doit correspondre au type de départ) à savoir que cette fonction print à partir de la case envoyer en paramètre vers la fin (elle ne commence donc pas forcément au début).
+
+ --- / ft_rev_print_lstdc(t_lstdc **lstdc, char type) \ ---
+ 
+Imprime la data de tout les élèments de la lstdc passer en paramètre grâce au type choisie en commençant par la fin (le type choisie doit correspondre au type de départ).
+
+ --- / void	ft_print_one_lstdc(t_lstdc **lstdc, char type, int index) \ ---
+
+Imprime la data de la case indiquer par l'index passer, grâce au type choisie en paramétre (le type choisie doit correspondre au type de départ)
+
+ --- / void	ft_print_lstdc(t_lstdc **lstdc, char type, int index) \ ---
+ 
+Imprime la data de tout les élèments de la lstdc passer en paramètre grâce au type choisie en commençant à l'index envoyer en paramètre (le type choisie doit correspondre au type de départ).
+
+/******** ft_index_lstdc ********/
+
+ --- / t_lstdc	*ft_check_index(t_lstdc **lstdc, int shift) \ ---
+ 
+Vérifie si les index de la lstdc sont bien espacé de shift (si shift = 2 alors index = 0 2 4) si c'est le cas alors la fonction renvoi NULL sinon elle renvoie le maillon à partir du qu'elle il y a um beug
+
+ --- / void	ft_fix_index(t_lstdc **lstdc, int shift) \ ---
+ 
+Décale de shift les index de la lstdc si néssaire part du début;
+
+/******** ft_move_in_lstdc ********/
+
+ --- / void	ft_move_one(t_lstdc **lstdc) \ ---
+ 
+Avance le pointeur de la lstdc de 1 si c'est possible (s'arrête avant le NULL).
+
+ --- / void	ft_back_one(t_lstdc **lstdc) \ ---
+
+Recule le pointeur de la lstdc de 1 si c'est possible (s'arrête avant le NULL).
+
+ --- / void	ft_move_lstdc(t_lstdc **lstdc, int move) \ ---
+
+Avance le pointeur de la lstdc de autant de maillon que indiquer dans move (s'arrête avant le NULL).
+
+ --- / void	ft_back_lstdc(t_lstdc **lstdc, int back) \ ---
+
+Recule le pointeur de la lstdc de autant de maillon que indiquer dans back (s'arrête avant le NULL).
+
+ --- / void	ft_go_to(t_lstdc **lstdc, int where) \ ---
+
+Mets le pointeur de la lstdc à l'index indiquer dans where, 0 permet d'aller au début de la lstdc et -1 à la fin si l'index est trop grand alors la fonction va à la fin de la lstdc (s'arrête avant le NULL).
+
+/******** ft_get_lstdc ********/
+
+ --- / void	ft_get_len_lstdc(t_lstdc **lstdc, int back) \ ---
+ 
+Renvoi la longueur de la lstdc si elle vide renvoie 0.
+
+--- / void	*ft_get_data(t_lstdc **lstdc, int index) \ ---
+
+Renvoi la data de la case à l'index demander.
+Si l'index = -1 ou est trop grand va jusqu'à la fin.
+
+/******** ft_merge_lstdc ********/
+
+ --- / void	ft_merge_lstdc(t_lstdc **lstdc1, t_lstdc **lstdc2) \ ---
+ 
+Ajouter la liste lstdc2 a la fin de la liste lstdc1.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+Creer une case ☑️
+Creer une liste entière ☑️
+
+Ajouter une case à la fin ☑️
+Ajouter une case au début ☑️
+
+Createur de void ** adaptatif aux type☑️
+Createur d'inverseur de void ** adaptatif aux type☑️
+
+Print la chaine avec choix de ce qu'est la data (int, char, char * str)☑️
+
+Print le maillon avec choix de ce qu'est la data a l'index demander (int, char, char * str)☑️
+Print la chaine avec choix de ce qu'est la data a l'inverse (int, char, char * str)☑️
+Print la chaine avec choix de ce qu'est la data a partir de l'index demander (int, char,char * str)☑️
+
+Print la chaine avec choix de ce qu'est la data a partir de l'index demander en inverse (int, char,char * str)
+
+Free une liste entière☑️
+Ajouter une case à l'index indiquer☑️
+
+Avancer dans la chaîne de 1☑️
+Avancer dans la chaîne de jusqu'à l'index demander ☑️
+Reculer dans la chaîne de 1☑️
+Reculer dans la chaîne de jusqu'à l'index demander ☑️
+
+Destroy la case à l'index demander☑️
+Destroy les cases aux index indiquer☑️
+Destroy les cases sur la plage indiquer☑️
+
+Ajouter une liste d'éléments a la fin d'une liste existante☑️
+Ajouter une liste d'éléments au début d'une liste existante☑️
+
+Augmenter les index de x depuis un index de départ
+Réduire les index de x depuis un index de départ
+
+Revenir au début de la chaine☑️
+Aller a la fin de la chaîne☑️
+
+Renvoyer la data à l'index demander (avec choix du types (int, char, char * str))☑️
+Renvoyer la taille de la chaine☑️
+Renvoyer et changer la data a l'index demander☑️
+Renvoyer les data dans le type demander (int *, char *, char **)☑️
+
+Bouger une case vers l'index demander
+Bouger une case vers jusqu'au début
+Bouger une case vers jusqu'a la fin
+
+Créer des version compacte de création de lstdc (qui combine vv et le create)☑️
+
+Swap des cases entre elle (swap la data)
+
+Supporter le multi type pour la data genre une liste 1, 4 et 2, Bonjour
+
+Supporter le type int simple (2 != {1,2})pour la data☑️
+Supporter le type char simple (a != {a,b})pour la data☑️
+Supporter le type long long pour la data
+Supporter le type lstdc pour la data
+
+Merge de 2 lstdc (1 sur 2 , L'un a la suite de l'autre)
+
+Ajouter la possiblité de mettre un shift ou non dans la création et addition des éléments de la liste.
+
+faire des add typés☑️
